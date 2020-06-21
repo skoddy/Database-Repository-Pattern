@@ -105,7 +105,6 @@ List<Customer> customerList = customerRepository.GetAll();
 
 Datensatz aktualisieren (Update)
 ```c#
-// Datensatz aktualisieren (Update)
 customerList[0].City = "Madrid";
 customerRepository.Update(customerList[0]);
 ```
