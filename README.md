@@ -1,9 +1,6 @@
 # Database-Repository-Pattern
 Einfache Lösung für den Datenbankzugriff mittels Repository Pattern und ohne Entity Framework (EF)
 
-## Plain Old CLR Object (POCO)
- - Normales .NET Objekt ohne Infrastruktur
-
  Zunächst wird aus der Datenbanktabelle ein POCO Objekt erstellt.
  Angenommen wir haben eine Tabelle Namens Customer:
  ```sql
@@ -15,6 +12,11 @@ Einfache Lösung für den Datenbankzugriff mittels Repository Pattern und ohne E
     primary key (CustomerID)
 );
  ```
+
+## Plain Old CLR Object (POCO)
+ - Normales .NET Objekt ohne Infrastruktur
+
+
  Daraus wird folgendes Objekt:
   ```c#
 public class Customer
