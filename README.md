@@ -51,4 +51,67 @@ public interface IRepository <T>
 }
 ```
 Das Interface ist generisch, damit es für alle Repositories wiederverwendet werden kann.
- 
+
+
+```c#
+public class CustomerRepository : IRepository<Customer>
+{
+    private readonly Database db;
+
+    public CustomerRepository()
+    {
+        db = new Database();
+    }
+
+    public void Insert(Customer model)
+    {
+        List<MySqlParameter> parameters = model.ObjectToParameterList();
+
+        string sql = 
+            "INSERT INTO Customers (CompanyName, City, Country) " +
+            "VALUES(@CompanyName, @City, @Country)";
+
+        db.Execute(sql, parameters);
+        db.Close();
+    }
+
+
+}
+```
+
+Repository instanzieren
+```c#
+CustomerRepository customerRepository = new CustomerRepository();
+```
+
+Neuen Datensatz einfügen (Create)
+```c#
+Customer customer = new Customer();
+customer.CompanyName = "Honk";
+customer.City = "Paris";
+customer.Country = "Frankreich";
+customerRepository.Insert(customer);
+```
+
+Einzelnen Datensatz holen (Read)
+```c#
+Customer customer = customerRepository.GetById(1);
+```
+
+Alle Datensätze holen (Read)
+```c#
+List<Customer> customerList = customerRepository.GetAll();
+```
+
+Datensatz aktualisieren (Update)
+```c#
+// Datensatz aktualisieren (Update)
+customerList[0].City = "Madrid";
+customerRepository.Update(customerList[0]);
+```
+
+Datensatz löschen (Delete)
+```c#
+customerRepository.Delete(1);
+```
+
