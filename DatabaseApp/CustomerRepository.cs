@@ -81,7 +81,6 @@ namespace DatabaseApp
             db.Close();
         }
 
-
         protected Customer Populate(MySqlDataReader reader)
         {
             Customer customer = new Customer
@@ -94,6 +93,5 @@ namespace DatabaseApp
 
             return customer;
         }
-
     }
 }
