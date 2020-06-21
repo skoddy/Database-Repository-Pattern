@@ -4,14 +4,6 @@ Einfache Lösung für den Datenbankzugriff mittels Repository Pattern und ohne E
 ## Plain Old CLR Object (POCO)
  - Normales .NET Objekt ohne Infrastruktur
 
-## Single Resonsibility Principle (S of S.O.L.I.D)
- - Eine Klasse sollte nur eine Aufgabe haben.
- - Das erhöht die Wartbarkeit und Änderungen an einer Klasse beeinflussen nicht die anderen Klassen.
-
-## Repository Pattern
- - Bei dem Repository Pattern legt man ein Facade Pattern über den Datenbankzugriff.
- - Der Rest des Programms muss nicht wissen wie der Datenbankzugriff funktioniert.
- 
  Zunächst wird aus der Datenbanktabelle ein POCO Objekt erstellt.
  Angenommen wir haben eine Tabelle Namens Customer:
  ```sql
@@ -33,6 +25,17 @@ public class Customer
     public string City { get; set; }
 }
 ```
+
+## Single Resonsibility Principle (S of S.O.L.I.D)
+ - Eine Klasse sollte nur eine Aufgabe haben.
+ - Das erhöht die Wartbarkeit und Änderungen an einer Klasse beeinflussen nicht die anderen Klassen.
+ - Das wird hier durch das Repository erreicht.
+ 
+## Repository Pattern
+ - Bei dem Repository Pattern legt man im Prinzip ein Facade Pattern vor den Datenbankzugriff.
+ - Der Rest des Programms muss nicht wissen wie der Datenbankzugriff funktioniert.
+ 
+
 
 Für die Repository Klasse wird ein Interface mit allen typischen CRUD (Create, Read, Update, Delete) Operationen angelegt. Da in der Regel alle Datensätze und ein spezieller Datensatz abgefragt wird, kommen noch die Methoden `GetAll()` und `GetById()` hinzu.
 ```c#
