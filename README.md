@@ -37,7 +37,7 @@ public class Customer
  
 
 
-Für die Repository Klasse wird ein Interface mit allen typischen CRUD (Create, Read, Update, Delete) Operationen angelegt. Da in der Regel alle Datensätze und ein spezieller Datensatz abgefragt wird, kommen noch die Methoden `GetAll()` und `GetById()` hinzu.
+Für die Repository Klasse wird ein Interface mit allen typischen CRUD (Create, Read, Update, Delete) Operationen angelegt. Da in der Regel zusätzlich alle Datensätze und ein spezieller Datensatz abgefragt wird, kommen noch die Methoden `GetAll()` und `GetById()` hinzu.
 ```c#
 public interface IRepository <T>
 {
